@@ -1,4 +1,4 @@
-6const fs =require('fs');
+const fs =require('fs');
 let data;
 fs.readFile('index.html', 'utf8', function (err, datat) {
     // Display the file content
