@@ -1,4 +1,4 @@
-import fs from 'fs';
+const fs require('fs');
 const data = fs.readfile('./index.html','utf8');
 const http = require('http');
 
