@@ -15,7 +15,7 @@
         eventSource.onmessage = (event) => {
             const newEvent = document.createElement('p');
             newEvent.textContent = `Received event: ${event.data}`;
-            document.getElementById('events').appendChild(newEvent);
+            document.getElementById('events').textContent(newEvent);
         };
 
         eventSource.onerror = (error) => {
