@@ -1,0 +1,27 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Node.js SSE Example</title>
+</head>
+<body>
+    <h1>Server-Sent Events Example</h1>
+    <div id="events"></div>
+
+    <script>
+        const eventSource = new EventSource('/events');
+
+        eventSource.onmessage = (event) => {
+            const newEvent = document.createElement('p');
+            newEvent.textContent = `Received event: ${event.data}`;
+            document.getElementById('events').appendChild(newEvent);
+        };
+
+        eventSource.onerror = (error) => {
+            console.error('Error:', error);
+            eventSource.close();
+        };
+    </script>
+</body>
+</html>
