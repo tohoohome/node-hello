@@ -1,13 +1,27 @@
+<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>Hello World</h1>
-  </body>
+    <title>Node.js SSE Example</title>
+</head>
+<body>
+    <h1>Server-Sent Events Example</h1>
+    <div id="events"></div>
+
+    <script>
+        const eventSource = new EventSource('/events');
+
+        eventSource.onmessage = (event) => {
+            const newEvent = document.createElement('p');
+            newEvent.textContent = `Received event: ${event.data}`;
+            document.getElementById('events').appendChild(newEvent);
+        };
+
+        eventSource.onerror = (error) => {
+            console.error('Error:', error);
+            eventSource.close();
+        };
+    </script>
+</body>
 </html>
