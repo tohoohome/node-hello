@@ -4,7 +4,7 @@ fs.readFile('index.html', 'utf8', function (err, datat) {
     // Display the file content
     data=datat
 });
-const now = new Date();
+let now = new Date();
 const test="Current Date and Time:", now.toString();
 
 const http = require('http');
