@@ -1,5 +1,10 @@
 const fs =require('fs');
-const data = fs.readFile('./index.html','utf8');
+let data;
+fs.readFile('index.html', 'utf8', function (err, datat) {
+    // Display the file content
+    data=datat
+});
+
 const http = require('http');
 
 const port = process.env.PORT || 3000;
