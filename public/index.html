@@ -7,17 +7,21 @@
 </head>
 <body>
     <h1>Server-Sent Events Example</h1>
-    <div id="events"></div>
+    <div id="events">
+        <p id="currentTime">Waiting for updates...</p>
+    </div>
 
     <script>
+        // Create a new EventSource instance to listen to /events endpoint
         const eventSource = new EventSource('/events');
 
+        // Listen for incoming messages and update the current time
         eventSource.onmessage = (event) => {
-            const newEvent = document.createElement('p');
-            newEvent.textContent = `Received event: ${event.data}`;
-            document.getElementById('events').textContent(newEvent);
+            // Update the content of the #currentTime element
+            document.getElementById('currentTime').textContent = `Received event: ${event.data}`;
         };
 
+        // Handle errors (e.g., if server is down)
         eventSource.onerror = (error) => {
             console.error('Error:', error);
             eventSource.close();
