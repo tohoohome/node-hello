@@ -25,7 +25,7 @@ app.get('/events', (req, res) => {
     const intervalId = setInterval(() => {
         const now = new Date().toLocaleTimeString();
         res.write(`data: ${now}\n\n`);
-    }, 2000);
+    }, 1000);
 
     // Close the connection when the client disconnects
     req.on('close', () => {
