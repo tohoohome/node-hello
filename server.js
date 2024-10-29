@@ -16,7 +16,8 @@ app.get('/api/items', async(req, res) => {
         const allItems = await itemsPool.query(
             'SELECT * FROM items'
         );
-        res.json({ allItems.rows });
+       // res.json({ allItems.rows });
+        res.send(`Done ${allItems}`);
     } catch (error) {
         console.log(error);
         res.status(500).send(error.message)
