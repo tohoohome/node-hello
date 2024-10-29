@@ -41,7 +41,7 @@ app.post('/api/items', async (req, res) => {
     }
 })
 
-app.listen(5070, () => {
+app.listen(3000, () => {
     console.log("Server running on port 5070");
 })
   
