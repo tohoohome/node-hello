@@ -10,7 +10,7 @@ const itemsPool = require('./dbConfig')
 app.get('/',async (req, res) => {
     try {
         const allItems = await itemsPool.query(
-            'SELECT description FROM items limit 1'
+            'SELECT description FROM items where id=1'
         );
         res.send( allItems.rows[0]["description"] );
     } catch (error) {
