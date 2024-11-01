@@ -8,7 +8,16 @@ dotenv.config();
 const itemsPool = require('./dbConfig')
 
 app.get('/', (req, res) => {
-    res.send('Simple API homepage');
+    try {
+        const allItems = await itemsPool.query(
+            'SELECT description FROM items limit 1'
+        );
+        res.send({ allItems.rows[0] });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error.message)
+    }
+ //   res.send('Simple API homepage');
 })
 
 app.get('/api/items', async(req, res) => {
