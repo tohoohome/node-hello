@@ -12,7 +12,7 @@ app.get('/',async (req, res) => {
         const allItems = await itemsPool.query(
             'SELECT description FROM items limit 1'
         );
-        res.send({ allItems.rows });
+        res.send( allItems.rows );
     } catch (error) {
         console.log(error);
         res.status(500).send(error.message)
