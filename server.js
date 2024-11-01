@@ -7,7 +7,7 @@ dotenv.config();
 
 const itemsPool = require('./dbConfig')
 
-app.get('/', (req, res) => {
+app.get('/',async (req, res) => {
     try {
         const allItems = await itemsPool.query(
             'SELECT description FROM items limit 1'
